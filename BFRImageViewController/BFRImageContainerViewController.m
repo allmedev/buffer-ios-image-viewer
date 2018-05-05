@@ -11,9 +11,12 @@
 #import "BFRImageViewerConstants.h"
 #import <Photos/Photos.h>
 #import <PhotosUI/PhotosUI.h>
-#import <DACircularProgress/DACircularProgressView.h>
+#import "DACircularProgressView.h"
+#import <FLAnimatedImage/FLAnimatedImage.h>
 #import <PINRemoteImage/PINRemoteImage.h>
 #import <PINRemoteImage/PINImageView+PINRemoteImage.h>
+
+#define FLAnimatedImage FLAnimatedImage
 
 @interface BFRImageContainerViewController () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 

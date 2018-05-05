@@ -1,0 +1,457 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7CF02788209E0752000C1487 /* BFRImageContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF02777209E0752000C1487 /* BFRImageContainerViewController.m */; };
+		7CF02789209E0752000C1487 /* BFRImageTransitionAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF02778209E0752000C1487 /* BFRImageTransitionAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CF0278A209E0752000C1487 /* BFRImageViewerLocalizations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7CF0277A209E0752000C1487 /* BFRImageViewerLocalizations.bundle */; };
+		7CF0278B209E0752000C1487 /* lowResImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF0277B209E0752000C1487 /* lowResImage.png */; };
+		7CF0278C209E0752000C1487 /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF0277C209E0752000C1487 /* cross.png */; };
+		7CF0278D209E0752000C1487 /* cross@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF0277D209E0752000C1487 /* cross@3x.png */; };
+		7CF0278E209E0752000C1487 /* cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF0277E209E0752000C1487 /* cross@2x.png */; };
+		7CF0278F209E0752000C1487 /* BFRImageViewerConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0277F209E0752000C1487 /* BFRImageViewerConstants.m */; };
+		7CF02790209E0752000C1487 /* BFRBackLoadedImageSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF02780209E0752000C1487 /* BFRBackLoadedImageSource.m */; };
+		7CF02791209E0752000C1487 /* BFRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF02781209E0752000C1487 /* BFRImageViewController.m */; };
+		7CF02792209E0752000C1487 /* BFRBackLoadedImageSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF02782209E0752000C1487 /* BFRBackLoadedImageSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CF02793209E0752000C1487 /* BFRImageViewerConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF02783209E0752000C1487 /* BFRImageViewerConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CF02794209E0752000C1487 /* BFRImageTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF02784209E0752000C1487 /* BFRImageTransitionAnimator.m */; };
+		7CF02795209E0752000C1487 /* BFRImageContainerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF02785209E0752000C1487 /* BFRImageContainerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CF02796209E0752000C1487 /* BFRImageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF02786209E0752000C1487 /* BFRImageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CF02797209E0752000C1487 /* BFRImageViewerLocalizations.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF02787209E0752000C1487 /* BFRImageViewerLocalizations.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CF02799209E0767000C1487 /* PINRemoteImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF02798209E0767000C1487 /* PINRemoteImage.framework */; };
+		7CF0279F209E07FE000C1487 /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0279B209E07FE000C1487 /* DALabeledCircularProgressView.m */; };
+		7CF027A0209E07FE000C1487 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0279C209E07FE000C1487 /* DACircularProgressView.m */; };
+		7CF027A1209E07FE000C1487 /* DALabeledCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF0279D209E07FE000C1487 /* DALabeledCircularProgressView.h */; };
+		7CF027A2209E07FE000C1487 /* DACircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF0279E209E07FE000C1487 /* DACircularProgressView.h */; };
+		7CF027A4209E08D7000C1487 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF027A3209E08D7000C1487 /* FLAnimatedImage.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7CB018F4209DC5FA0068ABE9 /* BFRImageViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BFRImageViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CB018F8209DC5FA0068ABE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CF02777209E0752000C1487 /* BFRImageContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFRImageContainerViewController.m; sourceTree = "<group>"; };
+		7CF02778209E0752000C1487 /* BFRImageTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRImageTransitionAnimator.h; sourceTree = "<group>"; };
+		7CF0277A209E0752000C1487 /* BFRImageViewerLocalizations.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BFRImageViewerLocalizations.bundle; sourceTree = "<group>"; };
+		7CF0277B209E0752000C1487 /* lowResImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lowResImage.png; sourceTree = "<group>"; };
+		7CF0277C209E0752000C1487 /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
+		7CF0277D209E0752000C1487 /* cross@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@3x.png"; sourceTree = "<group>"; };
+		7CF0277E209E0752000C1487 /* cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@2x.png"; sourceTree = "<group>"; };
+		7CF0277F209E0752000C1487 /* BFRImageViewerConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFRImageViewerConstants.m; sourceTree = "<group>"; };
+		7CF02780209E0752000C1487 /* BFRBackLoadedImageSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFRBackLoadedImageSource.m; sourceTree = "<group>"; };
+		7CF02781209E0752000C1487 /* BFRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFRImageViewController.m; sourceTree = "<group>"; };
+		7CF02782209E0752000C1487 /* BFRBackLoadedImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRBackLoadedImageSource.h; sourceTree = "<group>"; };
+		7CF02783209E0752000C1487 /* BFRImageViewerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRImageViewerConstants.h; sourceTree = "<group>"; };
+		7CF02784209E0752000C1487 /* BFRImageTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFRImageTransitionAnimator.m; sourceTree = "<group>"; };
+		7CF02785209E0752000C1487 /* BFRImageContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRImageContainerViewController.h; sourceTree = "<group>"; };
+		7CF02786209E0752000C1487 /* BFRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRImageViewController.h; sourceTree = "<group>"; };
+		7CF02787209E0752000C1487 /* BFRImageViewerLocalizations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRImageViewerLocalizations.h; sourceTree = "<group>"; };
+		7CF02798209E0767000C1487 /* PINRemoteImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PINRemoteImage.framework; path = Carthage/Build/iOS/PINRemoteImage.framework; sourceTree = "<group>"; };
+		7CF0279B209E07FE000C1487 /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
+		7CF0279C209E07FE000C1487 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
+		7CF0279D209E07FE000C1487 /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
+		7CF0279E209E07FE000C1487 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		7CF027A3209E08D7000C1487 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7CB018F0209DC5FA0068ABE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CF027A4209E08D7000C1487 /* FLAnimatedImage.framework in Frameworks */,
+				7CF02799209E0767000C1487 /* PINRemoteImage.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7CB018EA209DC5FA0068ABE9 = {
+			isa = PBXGroup;
+			children = (
+				7CF0279A209E07FE000C1487 /* DACircularProgress */,
+				7CF02776209E0752000C1487 /* BFRImageViewController */,
+				7CB018F6209DC5FA0068ABE9 /* BFRImageViewer */,
+				7CB018F5209DC5FA0068ABE9 /* Products */,
+				7CF02771209E0460000C1487 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7CB018F5209DC5FA0068ABE9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7CB018F4209DC5FA0068ABE9 /* BFRImageViewer.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7CB018F6209DC5FA0068ABE9 /* BFRImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				7CB018F8209DC5FA0068ABE9 /* Info.plist */,
+			);
+			path = BFRImageViewer;
+			sourceTree = "<group>";
+		};
+		7CF02771209E0460000C1487 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CF027A3209E08D7000C1487 /* FLAnimatedImage.framework */,
+				7CF02798209E0767000C1487 /* PINRemoteImage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7CF02776209E0752000C1487 /* BFRImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7CF02777209E0752000C1487 /* BFRImageContainerViewController.m */,
+				7CF02778209E0752000C1487 /* BFRImageTransitionAnimator.h */,
+				7CF02779209E0752000C1487 /* Resources */,
+				7CF0277F209E0752000C1487 /* BFRImageViewerConstants.m */,
+				7CF02780209E0752000C1487 /* BFRBackLoadedImageSource.m */,
+				7CF02781209E0752000C1487 /* BFRImageViewController.m */,
+				7CF02782209E0752000C1487 /* BFRBackLoadedImageSource.h */,
+				7CF02783209E0752000C1487 /* BFRImageViewerConstants.h */,
+				7CF02784209E0752000C1487 /* BFRImageTransitionAnimator.m */,
+				7CF02785209E0752000C1487 /* BFRImageContainerViewController.h */,
+				7CF02786209E0752000C1487 /* BFRImageViewController.h */,
+				7CF02787209E0752000C1487 /* BFRImageViewerLocalizations.h */,
+			);
+			path = BFRImageViewController;
+			sourceTree = "<group>";
+		};
+		7CF02779209E0752000C1487 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7CF0277A209E0752000C1487 /* BFRImageViewerLocalizations.bundle */,
+				7CF0277B209E0752000C1487 /* lowResImage.png */,
+				7CF0277C209E0752000C1487 /* cross.png */,
+				7CF0277D209E0752000C1487 /* cross@3x.png */,
+				7CF0277E209E0752000C1487 /* cross@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7CF0279A209E07FE000C1487 /* DACircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				7CF0279B209E07FE000C1487 /* DALabeledCircularProgressView.m */,
+				7CF0279C209E07FE000C1487 /* DACircularProgressView.m */,
+				7CF0279D209E07FE000C1487 /* DALabeledCircularProgressView.h */,
+				7CF0279E209E07FE000C1487 /* DACircularProgressView.h */,
+			);
+			path = DACircularProgress;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7CB018F1209DC5FA0068ABE9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CF027A1209E07FE000C1487 /* DALabeledCircularProgressView.h in Headers */,
+				7CF02796209E0752000C1487 /* BFRImageViewController.h in Headers */,
+				7CF02792209E0752000C1487 /* BFRBackLoadedImageSource.h in Headers */,
+				7CF02795209E0752000C1487 /* BFRImageContainerViewController.h in Headers */,
+				7CF02789209E0752000C1487 /* BFRImageTransitionAnimator.h in Headers */,
+				7CF02797209E0752000C1487 /* BFRImageViewerLocalizations.h in Headers */,
+				7CF02793209E0752000C1487 /* BFRImageViewerConstants.h in Headers */,
+				7CF027A2209E07FE000C1487 /* DACircularProgressView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7CB018F3209DC5FA0068ABE9 /* BFRImageViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CB018FC209DC5FA0068ABE9 /* Build configuration list for PBXNativeTarget "BFRImageViewer" */;
+			buildPhases = (
+				7CB018EF209DC5FA0068ABE9 /* Sources */,
+				7CB018F0209DC5FA0068ABE9 /* Frameworks */,
+				7CB018F1209DC5FA0068ABE9 /* Headers */,
+				7CB018F2209DC5FA0068ABE9 /* Resources */,
+				7CF02775209E0500000C1487 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BFRImageViewer;
+			productName = BFRImageViewer;
+			productReference = 7CB018F4209DC5FA0068ABE9 /* BFRImageViewer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7CB018EB209DC5FA0068ABE9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Oleg D. (oleg.degtyarenko@gmail.com)";
+				TargetAttributes = {
+					7CB018F3209DC5FA0068ABE9 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 7CB018EE209DC5FA0068ABE9 /* Build configuration list for PBXProject "BFRImageViewer" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7CB018EA209DC5FA0068ABE9;
+			productRefGroup = 7CB018F5209DC5FA0068ABE9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7CB018F3209DC5FA0068ABE9 /* BFRImageViewer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7CB018F2209DC5FA0068ABE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CF0278E209E0752000C1487 /* cross@2x.png in Resources */,
+				7CF0278D209E0752000C1487 /* cross@3x.png in Resources */,
+				7CF0278C209E0752000C1487 /* cross.png in Resources */,
+				7CF0278A209E0752000C1487 /* BFRImageViewerLocalizations.bundle in Resources */,
+				7CF0278B209E0752000C1487 /* lowResImage.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7CF02775209E0500000C1487 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/PINRemoteImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FLAnimatedImage.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PINRemoteImage.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FLAnimatedImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7CB018EF209DC5FA0068ABE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CF0278F209E0752000C1487 /* BFRImageViewerConstants.m in Sources */,
+				7CF0279F209E07FE000C1487 /* DALabeledCircularProgressView.m in Sources */,
+				7CF02788209E0752000C1487 /* BFRImageContainerViewController.m in Sources */,
+				7CF02794209E0752000C1487 /* BFRImageTransitionAnimator.m in Sources */,
+				7CF02790209E0752000C1487 /* BFRBackLoadedImageSource.m in Sources */,
+				7CF027A0209E07FE000C1487 /* DACircularProgressView.m in Sources */,
+				7CF02791209E0752000C1487 /* BFRImageViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7CB018FA209DC5FA0068ABE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7CB018FB209DC5FA0068ABE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7CB018FD209DC5FA0068ABE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = BFRImageViewer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.olegd.BFRImageViewer;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7CB018FE209DC5FA0068ABE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = BFRImageViewer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.olegd.BFRImageViewer;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7CB018EE209DC5FA0068ABE9 /* Build configuration list for PBXProject "BFRImageViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CB018FA209DC5FA0068ABE9 /* Debug */,
+				7CB018FB209DC5FA0068ABE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CB018FC209DC5FA0068ABE9 /* Build configuration list for PBXNativeTarget "BFRImageViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CB018FD209DC5FA0068ABE9 /* Debug */,
+				7CB018FE209DC5FA0068ABE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7CB018EB209DC5FA0068ABE9 /* Project object */;
+}
