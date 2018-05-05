@@ -28,7 +28,6 @@
 		7CF027A0209E07FE000C1487 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0279C209E07FE000C1487 /* DACircularProgressView.m */; };
 		7CF027A1209E07FE000C1487 /* DALabeledCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF0279D209E07FE000C1487 /* DALabeledCircularProgressView.h */; };
 		7CF027A2209E07FE000C1487 /* DACircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF0279E209E07FE000C1487 /* DACircularProgressView.h */; };
-		7CF027A4209E08D7000C1487 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF027A3209E08D7000C1487 /* FLAnimatedImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +62,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CF027A4209E08D7000C1487 /* FLAnimatedImage.framework in Frameworks */,
 				7CF02799209E0767000C1487 /* PINRemoteImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,11 +242,9 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/PINRemoteImage.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FLAnimatedImage.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PINRemoteImage.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FLAnimatedImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

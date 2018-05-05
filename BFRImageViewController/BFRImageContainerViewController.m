@@ -12,11 +12,8 @@
 #import <Photos/Photos.h>
 #import <PhotosUI/PhotosUI.h>
 #import "DACircularProgressView.h"
-#import <FLAnimatedImage/FLAnimatedImage.h>
 #import <PINRemoteImage/PINRemoteImage.h>
 #import <PINRemoteImage/PINImageView+PINRemoteImage.h>
-
-#define FLAnimatedImage FLAnimatedImage
 
 @interface BFRImageContainerViewController () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
@@ -24,7 +21,7 @@
 @property (strong, nonatomic, nonnull) UIScrollView *scrollView;
 
 /*! The actual view which will display the @c UIImage, this is housed inside of the scrollView property. */
-@property (strong, nonatomic, nullable) FLAnimatedImageView *imgView;
+@property (strong, nonatomic, nullable) UIImageView *imgView;
 
 /*! The actual view which will display the @c PHLivePhoto, this is housed inside of the scrollView property. */
 @property (strong, nonatomic, nullable) PHLivePhotoView *livePhotoImgView;
@@ -36,7 +33,7 @@
 @property (strong, nonatomic, nullable) PHLivePhoto *liveImgLoaded;
 
 /*! The image created from the passed in animatedImgLoaded property. */
-@property (strong, nonatomic, nullable) FLAnimatedImage *animatedImgLoaded;
+//@property (strong, nonatomic, nullable) FLAnimatedImage *animatedImgLoaded;
 
 /*! If the imgSrc property requires a network call, this displays inside the view to denote the loading progress. */
 @property (strong, nonatomic, nullable) DACircularProgressView *progressView;
@@ -105,7 +102,7 @@
         }
     } else if ([self.imgSrc isKindOfClass:[FLAnimatedImage class]]) {
         self.assetType = BFRImageAssetTypeGIF;
-        self.imgLoaded = ((FLAnimatedImage *)self.imgSrc).posterImage;
+//        self.imgLoaded = ((FLAnimatedImage *)self.imgSrc).posterImage;
         [self retrieveImageFromFLAnimatedImage];
     } else if ([self.imgSrc isKindOfClass:[NSString class]]) {
         self.assetType = BFRImageAssetTypeRemoteImage;
@@ -195,10 +192,10 @@
         resizableImageView = [[PHLivePhotoView alloc] initWithFrame:CGRectZero];
         ((PHLivePhotoView *)resizableImageView).livePhoto = self.liveImgLoaded;
     } else if (self.assetType == BFRImageAssetTypeGIF) {
-        resizableImageView = [FLAnimatedImageView new];
-        [resizableImageView setAnimatedImage:self.animatedImgLoaded];
+//        resizableImageView = [FLAnimatedImageView new];
+//        [resizableImageView setAnimatedImage:self.animatedImgLoaded];
     } else if (self.imgView == nil) {
-        resizableImageView = [[FLAnimatedImageView alloc] initWithImage:self.imgLoaded];
+        resizableImageView = [[UIImageView alloc] initWithImage:self.imgLoaded];
     }
     
     resizableImageView.frame = self.view.bounds;
@@ -242,7 +239,7 @@
             self.livePhotoImgView.playbackGestureRecognizer.enabled = NO;
         }
     } else {
-        self.imgView = (FLAnimatedImageView *)resizableImageView;
+        self.imgView = (UIImageView *)resizableImageView;
     }
 }
 
@@ -473,9 +470,9 @@
     }
     
     FLAnimatedImage *image = (FLAnimatedImage *)self.imgSrc;
-    self.imgLoaded = image.posterImage;
-    self.animatedImgLoaded = image;
-    
+//    self.imgLoaded = image.posterImage;
+//    self.animatedImgLoaded = image;
+
     [self addImageToScrollView];
 }
 
