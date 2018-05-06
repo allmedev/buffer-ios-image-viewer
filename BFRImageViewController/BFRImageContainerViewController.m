@@ -9,7 +9,7 @@
 #import "BFRImageContainerViewController.h"
 #import "BFRBackLoadedImageSource.h"
 #import <Photos/Photos.h>
-#import <DACircularProgress/DACircularProgressView.h>
+#import "DACircularProgressView.h"
 #import <PINRemoteImage/PINRemoteImage.h>
 #import <PINRemoteImage/PINImageView+PINRemoteImage.h>
 
@@ -19,7 +19,7 @@
 @property (strong, nonatomic, nonnull) UIScrollView *scrollView;
 
 /*! The actual view which will display the @c UIImage, this is housed inside of the scrollView property. */
-@property (strong, nonatomic, nullable) FLAnimatedImageView *imgView;
+@property (strong, nonatomic, nullable) UIImageView *imgView;
 
 /*! The image created from the passed in imgSrc property. */
 @property (strong, nonatomic, nullable) UIImage *imgLoaded;
@@ -63,9 +63,6 @@
         [self addImageToScrollView];
     } else if ([self.imgSrc isKindOfClass:[PHAsset class]]) {
         [self retrieveImageFromAsset];
-    } else if ([self.imgSrc isKindOfClass:[FLAnimatedImage class]]) {
-        self.imgLoaded = ((FLAnimatedImage *)self.imgSrc).posterImage;
-        [self retrieveImageFromFLAnimatedImage];
     } else if ([self.imgSrc isKindOfClass:[NSString class]]) {
         // Loading view
         NSURL *url = [NSURL URLWithString:self.imgSrc];
@@ -152,16 +149,16 @@
     return progressView;
 }
 
-- (FLAnimatedImageView *)createImageView {
-    FLAnimatedImageView *resizableImageView;
+- (UIImageView *)createImageView {
+    UIImageView *resizableImageView;
     
-    if(self.animatedImgLoaded){
-        resizableImageView = [[FLAnimatedImageView alloc] init];
-        [resizableImageView setAnimatedImage:self.animatedImgLoaded];
-    } else {
-        resizableImageView = [[FLAnimatedImageView alloc] initWithImage:self.imgLoaded];
-    }
-    
+//    if(self.animatedImgLoaded){
+//        resizableImageView = [[UIImageView alloc] init];
+//        [resizableImageView setAnimatedImage:self.animatedImgLoaded];
+//    } else {
+        resizableImageView = [[UIImageView alloc] initWithImage:self.imgLoaded];
+//    }
+
     resizableImageView.frame = self.view.bounds;
     resizableImageView.clipsToBounds = YES;
     resizableImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -368,15 +365,15 @@
 }
 
 - (void)retrieveImageFromFLAnimatedImage {
-    if (![self.imgSrc isKindOfClass:[FLAnimatedImage class]]) {
-        return;
-    }
-    
-    FLAnimatedImage *image = (FLAnimatedImage *)self.imgSrc;
-    self.imgLoaded = image.posterImage;
-    self.animatedImgLoaded = image;
-    
-    [self addImageToScrollView];
+//    if (![self.imgSrc isKindOfClass:[FLAnimatedImage class]]) {
+//        return;
+//    }
+//
+//    FLAnimatedImage *image = (FLAnimatedImage *)self.imgSrc;
+//    self.imgLoaded = image.posterImage;
+//    self.animatedImgLoaded = image;
+//
+//    [self addImageToScrollView];
 }
 
 - (void)retrieveImageFromURL {
@@ -396,13 +393,13 @@
                 return;
             }
             
-            if(result.alternativeRepresentation){
-                self.imgSrc = result.alternativeRepresentation;
-                [self retrieveImageFromFLAnimatedImage];
-            } else {
+//            if(result.alternativeRepresentation){
+//                self.imgSrc = result.alternativeRepresentation;
+//                [self retrieveImageFromFLAnimatedImage];
+//            } else {
                 self.imgLoaded = result.image;
-            }
-            
+//            }
+
             [self addImageToScrollView];
             [self.progressView removeFromSuperview];
         });
