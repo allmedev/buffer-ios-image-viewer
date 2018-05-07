@@ -47,6 +47,7 @@
                         self.onHighResImageLoaded(result.image);
                     });
                 }
+                self.image = result.image;
             } else {
                 NSLog(@"BFRImageViewer: Unable to load high resolution photo via backloading.");
             }
