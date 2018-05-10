@@ -24,7 +24,6 @@
 		7CC81FBB209F118E000CABBF /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC81FB7209F118E000CABBF /* DACircularProgressView.m */; };
 		7CC81FBC209F118E000CABBF /* DALabeledCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81FB8209F118E000CABBF /* DALabeledCircularProgressView.h */; };
 		7CC81FBD209F118E000CABBF /* DACircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81FB9209F118E000CABBF /* DACircularProgressView.h */; };
-		7CC81FC0209F11DE000CABBF /* PINRemoteImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC81FBF209F11DD000CABBF /* PINRemoteImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +54,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CC81FC0209F11DE000CABBF /* PINRemoteImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +162,6 @@
 				7CC81F88209F1106000CABBF /* Frameworks */,
 				7CC81F89209F1106000CABBF /* Headers */,
 				7CC81F8A209F1106000CABBF /* Resources */,
-				7CC81FC1209F11EA000CABBF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -220,24 +217,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		7CC81FC1209F11EA000CABBF /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/PINRemoteImage.framework",
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PINRemoteImage.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7CC81F87209F1106000CABBF /* Sources */ = {
