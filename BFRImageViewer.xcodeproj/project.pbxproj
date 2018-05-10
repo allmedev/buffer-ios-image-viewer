@@ -10,7 +10,6 @@
 		7CC81F91209F1106000CABBF /* BFRImageViewer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81F8F209F1106000CABBF /* BFRImageViewer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CC81FA7209F113C000CABBF /* BFRImageContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC81F98209F113C000CABBF /* BFRImageContainerViewController.m */; };
 		7CC81FA8209F113C000CABBF /* BFRImageTransitionAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81F99209F113C000CABBF /* BFRImageTransitionAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7CC81FA9209F113C000CABBF /* BFRImageViewerLocalizations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7CC81F9B209F113C000CABBF /* BFRImageViewerLocalizations.bundle */; };
 		7CC81FAA209F113C000CABBF /* lowResImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC81F9C209F113C000CABBF /* lowResImage.png */; };
 		7CC81FAB209F113C000CABBF /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC81F9D209F113C000CABBF /* cross.png */; };
 		7CC81FAC209F113C000CABBF /* cross@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC81F9E209F113C000CABBF /* cross@3x.png */; };
@@ -21,7 +20,6 @@
 		7CC81FB1209F113C000CABBF /* BFRImageTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC81FA3209F113C000CABBF /* BFRImageTransitionAnimator.m */; };
 		7CC81FB2209F113C000CABBF /* BFRImageContainerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81FA4209F113C000CABBF /* BFRImageContainerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CC81FB3209F113C000CABBF /* BFRImageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81FA5209F113C000CABBF /* BFRImageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7CC81FB4209F113C000CABBF /* BFRImageViewerLocalizations.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81FA6209F113C000CABBF /* BFRImageViewerLocalizations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CC81FBA209F118E000CABBF /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC81FB6209F118E000CABBF /* DALabeledCircularProgressView.m */; };
 		7CC81FBB209F118E000CABBF /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC81FB7209F118E000CABBF /* DACircularProgressView.m */; };
 		7CC81FBC209F118E000CABBF /* DALabeledCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81FB8209F118E000CABBF /* DALabeledCircularProgressView.h */; };
@@ -35,7 +33,6 @@
 		7CC81F90209F1106000CABBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CC81F98209F113C000CABBF /* BFRImageContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFRImageContainerViewController.m; sourceTree = "<group>"; };
 		7CC81F99209F113C000CABBF /* BFRImageTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRImageTransitionAnimator.h; sourceTree = "<group>"; };
-		7CC81F9B209F113C000CABBF /* BFRImageViewerLocalizations.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BFRImageViewerLocalizations.bundle; sourceTree = "<group>"; };
 		7CC81F9C209F113C000CABBF /* lowResImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lowResImage.png; sourceTree = "<group>"; };
 		7CC81F9D209F113C000CABBF /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
 		7CC81F9E209F113C000CABBF /* cross@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@3x.png"; sourceTree = "<group>"; };
@@ -46,7 +43,6 @@
 		7CC81FA3209F113C000CABBF /* BFRImageTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFRImageTransitionAnimator.m; sourceTree = "<group>"; };
 		7CC81FA4209F113C000CABBF /* BFRImageContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRImageContainerViewController.h; sourceTree = "<group>"; };
 		7CC81FA5209F113C000CABBF /* BFRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRImageViewController.h; sourceTree = "<group>"; };
-		7CC81FA6209F113C000CABBF /* BFRImageViewerLocalizations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRImageViewerLocalizations.h; sourceTree = "<group>"; };
 		7CC81FB6209F118E000CABBF /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
 		7CC81FB7209F118E000CABBF /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		7CC81FB8209F118E000CABBF /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
@@ -101,7 +97,6 @@
 				7CC81FA4209F113C000CABBF /* BFRImageContainerViewController.h */,
 				7CC81F99209F113C000CABBF /* BFRImageTransitionAnimator.h */,
 				7CC81FA5209F113C000CABBF /* BFRImageViewController.h */,
-				7CC81FA6209F113C000CABBF /* BFRImageViewerLocalizations.h */,
 				7CC81FA0209F113C000CABBF /* BFRBackLoadedImageSource.m */,
 				7CC81F98209F113C000CABBF /* BFRImageContainerViewController.m */,
 				7CC81FA3209F113C000CABBF /* BFRImageTransitionAnimator.m */,
@@ -114,7 +109,6 @@
 		7CC81F9A209F113C000CABBF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7CC81F9B209F113C000CABBF /* BFRImageViewerLocalizations.bundle */,
 				7CC81F9C209F113C000CABBF /* lowResImage.png */,
 				7CC81F9D209F113C000CABBF /* cross.png */,
 				7CC81F9E209F113C000CABBF /* cross@3x.png */,
@@ -150,7 +144,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CC81FBD209F118E000CABBF /* DACircularProgressView.h in Headers */,
-				7CC81FB4209F113C000CABBF /* BFRImageViewerLocalizations.h in Headers */,
 				7CC81FB0209F113C000CABBF /* BFRBackLoadedImageSource.h in Headers */,
 				7CC81FB3209F113C000CABBF /* BFRImageViewController.h in Headers */,
 				7CC81FB2209F113C000CABBF /* BFRImageContainerViewController.h in Headers */,
@@ -222,7 +215,6 @@
 				7CC81FAD209F113C000CABBF /* cross@2x.png in Resources */,
 				7CC81FAC209F113C000CABBF /* cross@3x.png in Resources */,
 				7CC81FAB209F113C000CABBF /* cross.png in Resources */,
-				7CC81FA9209F113C000CABBF /* BFRImageViewerLocalizations.bundle in Resources */,
 				7CC81FAA209F113C000CABBF /* lowResImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
