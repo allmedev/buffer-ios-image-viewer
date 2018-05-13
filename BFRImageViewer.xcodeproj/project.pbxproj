@@ -10,7 +10,6 @@
 		7CC81F91209F1106000CABBF /* BFRImageViewer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81F8F209F1106000CABBF /* BFRImageViewer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CC81FA7209F113C000CABBF /* BFRImageContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC81F98209F113C000CABBF /* BFRImageContainerViewController.m */; };
 		7CC81FA8209F113C000CABBF /* BFRImageTransitionAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81F99209F113C000CABBF /* BFRImageTransitionAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7CC81FAA209F113C000CABBF /* lowResImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC81F9C209F113C000CABBF /* lowResImage.png */; };
 		7CC81FAB209F113C000CABBF /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC81F9D209F113C000CABBF /* cross.png */; };
 		7CC81FAC209F113C000CABBF /* cross@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC81F9E209F113C000CABBF /* cross@3x.png */; };
 		7CC81FAD209F113C000CABBF /* cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC81F9F209F113C000CABBF /* cross@2x.png */; };
@@ -212,7 +211,6 @@
 				7CC81FAD209F113C000CABBF /* cross@2x.png in Resources */,
 				7CC81FAC209F113C000CABBF /* cross@3x.png in Resources */,
 				7CC81FAB209F113C000CABBF /* cross.png in Resources */,
-				7CC81FAA209F113C000CABBF /* lowResImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

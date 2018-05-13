@@ -130,8 +130,8 @@
     UITapGestureRecognizer *singleSVTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissUI)];
     singleSVTap.numberOfTapsRequired = 1;
     singleSVTap.cancelsTouchesInView = NO;
-    [sv addGestureRecognizer:singleSVTap];
-    
+//    [sv addGestureRecognizer:singleSVTap];
+
     return sv;
 }
 
@@ -169,8 +169,8 @@
     UITapGestureRecognizer *singleImgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissUI)];
     singleImgTap.numberOfTapsRequired = 1;
     [resizableImageView setUserInteractionEnabled:YES];
-    [resizableImageView addGestureRecognizer:singleImgTap];
-    
+//    [resizableImageView addGestureRecognizer:singleImgTap];
+
     // Reset the image on double tap
     UITapGestureRecognizer *doubleImgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(recenterImageOriginOrZoomToPoint:)];
     doubleImgTap.numberOfTapsRequired = 2;
@@ -232,7 +232,7 @@
     CGFloat minScale = MIN(xScale, yScale);
     
     // Calculate Max
-    CGFloat maxScale = 4.0;
+    CGFloat maxScale = 8.0;
     if ([UIScreen instancesRespondToSelector:@selector(scale)]) {
         maxScale = maxScale / [[UIScreen mainScreen] scale];
         
