@@ -36,6 +36,12 @@
 /*! The behavior which allows for the image to "snap" back to the center if it's vertical offset isn't passed the closing points. */
 @property (strong, nonatomic, nonnull) UIAttachmentBehavior *imgAttatchment;
 
+/*! This view will either by a @c FLAnimatedImageView or an instance of @c PHLivePhotoView depending on the asset's type. */
+@property (strong, nonatomic, readonly, nullable) __kindof UIView *activeAssetView;
+
+/*! Currently, this only shows if a live photo is displayed to avoid gesture recognizer conflicts with playback and sharing. */
+@property (strong, nonatomic, nullable) UIBarButtonItem *shareBarButtonItem;
+
 @end
 
 @implementation BFRImageContainerViewController
@@ -55,8 +61,7 @@
     
     // Fetch image - or just display it
     if ([self.imgSrc isKindOfClass:[NSURL class]]) {
-        self.progressView = [self createProgressView];
-        [self.view addSubview:self.progressView];
+        [self addProgressView];
         [self retrieveImageFromURL];
     } else if ([self.imgSrc isKindOfClass:[UIImage class]]) {
         self.imgLoaded = (UIImage *)self.imgSrc;
@@ -67,8 +72,7 @@
         // Loading view
         NSURL *url = [NSURL URLWithString:self.imgSrc];
         self.imgSrc = url;
-        self.progressView = [self createProgressView];
-        [self.view addSubview:self.progressView];
+        [self addProgressView];
         [self retrieveImageFromURL];
     } else if ([self.imgSrc isKindOfClass:[BFRBackLoadedImageSource class]]) {
         self.imgLoaded = ((BFRBackLoadedImageSource *)self.imgSrc).image;
@@ -132,6 +136,12 @@
     singleSVTap.cancelsTouchesInView = NO;
 //    [sv addGestureRecognizer:singleSVTap];
 
+    self.scrollViewDismissGR = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleNoImageDrag:)];
+    if (self.shouldDisableHorizontalDrag) {
+        self.scrollViewDismissGR.delegate = self;
+    }
+    [sv addGestureRecognizer:self.scrollViewDismissGR];
+    
     return sv;
 }
 
@@ -145,8 +155,26 @@
     progressView.roundedCorners = NO;
     progressView.trackTintColor = [UIColor colorWithWhite:0.2 alpha:1];
     progressView.progressTintColor = [UIColor colorWithWhite:1.0 alpha:1];
+
+    UIPanGestureRecognizer *panImg = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleNoImageDrag:)];
+    if (self.shouldDisableHorizontalDrag) {
+        panImg.delegate = self;
+    }
+    [progressView addGestureRecognizer:panImg];
     
     return progressView;
+}
+
+- (void)addProgressView {
+    self.progressView = [self createProgressView];
+    [self.view addSubview:self.progressView];
+    self.scrollViewDismissGR.enabled = YES;
+}
+
+- (void)removeProgressView {
+    [self.progressView removeFromSuperview];
+    self.progressView = nil;
+    self.scrollViewDismissGR.enabled = NO;
 }
 
 - (UIImageView *)createImageView {
@@ -185,7 +213,7 @@
     [singleImgTap requireGestureRecognizerToFail:longPress];
     
     // Dragging to dismiss
-    UIPanGestureRecognizer *panImg = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleDrag:)];
+    UIPanGestureRecognizer *panImg = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageDrag:)];
     if (self.shouldDisableHorizontalDrag) {
         panImg.delegate = self;
     }
@@ -282,8 +310,8 @@
 
 #pragma mark - Dragging and Long Press Methods
 /*! This method has three different states due to the gesture recognizer. In them, we either add the required behaviors using UIDynamics, update the image's position based off of the touch points of the drag, or if it's ended we snap it back to the center or dismiss this view controller if the vertical offset meets the requirements. */
-- (void)handleDrag:(UIPanGestureRecognizer *)recognizer {
-    
+- (void)handleImageDrag:(UIPanGestureRecognizer *)recognizer {
+
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         [self.animator removeAllBehaviors];
         
@@ -327,6 +355,35 @@
             UISnapBehavior *snapBack = [[UISnapBehavior alloc] initWithItem:self.imgView snapToPoint:self.scrollView.center];
             [self.animator addBehavior:snapBack];
         }
+    }
+}
+
+- (void)handleNoImageDrag:(UIPanGestureRecognizer *)recognizer {
+
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        [self.animator removeAllBehaviors];
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        CGPoint translation = [recognizer translationInView:self.scrollView];
+        CGFloat verticalThreshholdSpace = self.view.bounds.size.height * 0.5;
+
+        UIView * parent = self.parentViewController.parentViewController.view;
+        parent.alpha = MAX(verticalThreshholdSpace - ABS(translation.y), 0) / verticalThreshholdSpace;
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        CGPoint location = [recognizer locationInView:self.scrollView];
+        CGRect closeTopThreshhold = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height * .35);
+        CGRect closeBottomThreshhold = CGRectMake(0, self.view.bounds.size.height - closeTopThreshhold.size.height, self.view.bounds.size.width, self.view.bounds.size.height * .35);
+
+        // Check if we should close - or just snap back to the center
+        BOOL shouldDismiss = CGRectContainsPoint(closeTopThreshhold, location) || CGRectContainsPoint(closeBottomThreshhold, location);
+
+        UIView * parent = self.parentViewController.parentViewController.view;
+        [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            parent.alpha = shouldDismiss ? 0.0 : 1.0;
+        } completion:^(BOOL finished) {
+            if (shouldDismiss) {
+                [self dimissUIFromDraggingGesture];
+            }
+        }];
     }
 }
 
@@ -388,7 +445,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!result.image && !result.alternativeRepresentation) {
-                [self.progressView removeFromSuperview];
+                [self removeProgressView];
                 [self showError];
                 return;
             }
@@ -401,7 +458,7 @@
 //            }
 
             [self addImageToScrollView];
-            [self.progressView removeFromSuperview];
+            [self removeProgressView];
         });
     }];
 }
