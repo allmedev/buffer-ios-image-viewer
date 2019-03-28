@@ -51,7 +51,7 @@
                     NSLog(@"BFRImageViewer: Unable to load high resolution photo via backloading.");
                     NSError *downloadError = [NSError errorWithDomain:HI_RES_IMG_ERROR_DOMAIN
                                                                  code:HI_RES_IMG_ERROR_CODE
-                                                             userInfo:@{NSLocalizedFailureReasonErrorKey:[NSString stringWithFormat:@"Failed to download an image for high resolution url %@", self.url.absoluteString]}];
+                                                             userInfo:@{@"error":[NSString stringWithFormat:@"Failed to download an image for high resolution url %@", self.url.absoluteString]}];
                     self.onCompletion(nil, downloadError);
                 }
             }
