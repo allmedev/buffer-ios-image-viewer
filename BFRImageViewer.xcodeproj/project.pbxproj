@@ -47,8 +47,6 @@
 		99A4D8E7224CBCD1005A42BD /* BFRImageTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFRImageTransitionAnimator.m; sourceTree = "<group>"; };
 		99A4D8E8224CBCD1005A42BD /* BFRImageContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRImageContainerViewController.h; sourceTree = "<group>"; };
 		99A4D8E9224CBCD1005A42BD /* BFRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRImageViewController.h; sourceTree = "<group>"; };
-		99A4D90E224CDE61005A42BD /* PINCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PINCache.framework; path = Carthage/Build/iOS/PINCache.framework; sourceTree = "<group>"; };
-		99A4D90F224CDE61005A42BD /* PINOperation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PINOperation.framework; path = Carthage/Build/iOS/PINOperation.framework; sourceTree = "<group>"; };
 		99A4D910224CDE61005A42BD /* PINRemoteImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PINRemoteImage.framework; path = Carthage/Build/iOS/PINRemoteImage.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,8 +123,6 @@
 		99A4D8FD224CC2B6005A42BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				99A4D90E224CDE61005A42BD /* PINCache.framework */,
-				99A4D90F224CDE61005A42BD /* PINOperation.framework */,
 				99A4D910224CDE61005A42BD /* PINRemoteImage.framework */,
 			);
 			name = Frameworks;
