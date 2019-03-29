@@ -9,13 +9,13 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata
+*.xcuserstate
 *.xccheckout
+*.xcbkptlist
 *.moved-aside
 DerivedData
 *.hmap
 *.ipa
-*.xcuserstate
 .DS_Store
 Carthage
 
