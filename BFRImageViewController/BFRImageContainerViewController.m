@@ -42,6 +42,9 @@
 /*! Currently, this only shows if a live photo is displayed to avoid gesture recognizer conflicts with playback and sharing. */
 @property (strong, nonatomic, nullable) UIBarButtonItem *shareBarButtonItem;
 
+/*! Animated view pan GR to have an ability to dismiss */
+@property (strong, nonatomic, nullable) UIPanGestureRecognizer * scrollViewDismissGR;
+
 @end
 
 @implementation BFRImageContainerViewController
