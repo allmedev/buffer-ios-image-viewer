@@ -98,20 +98,20 @@
 - (void)viewWillLayoutSubviews {
     // Scrollview
     [self.scrollView setFrame:self.view.bounds];
-    
+
     // Set the aspect ratio of the image
     float hfactor = self.imgLoaded.size.width / self.view.bounds.size.width;
     float vfactor = self.imgLoaded.size.height /  self.view.bounds.size.height;
     float factor = fmax(hfactor, vfactor);
-    
+
     // Divide the size by the greater of the vertical or horizontal shrinkage factor
     float newWidth = self.imgLoaded.size.width / factor;
     float newHeight = self.imgLoaded.size.height / factor;
-    
+
     // Then figure out offset to center vertically or horizontally
     float leftOffset = (self.view.bounds.size.width - newWidth) / 2;
     float topOffset = ( self.view.bounds.size.height - newHeight) / 2;
-    
+
     // Reposition image view
     CGRect newRect = CGRectMake(leftOffset, topOffset, newWidth, newHeight);
 
@@ -132,12 +132,11 @@
     sv.showsVerticalScrollIndicator = NO;
     sv.decelerationRate = UIScrollViewDecelerationRateFast;
     sv.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    //For UI Toggling
-    UITapGestureRecognizer *singleSVTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissUI)];
-    singleSVTap.numberOfTapsRequired = 1;
-    singleSVTap.cancelsTouchesInView = NO;
-//    [sv addGestureRecognizer:singleSVTap];
+    if (@available(iOS 11.0, *)) {
+        sv.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = false;
+    }
 
     self.scrollViewDismissGR = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleNoImageDrag:)];
     if (self.shouldDisableHorizontalDrag) {
@@ -195,12 +194,6 @@
     resizableImageView.contentMode = UIViewContentModeScaleAspectFill;
     resizableImageView.backgroundColor = [UIColor colorWithWhite:0 alpha:1];
     resizableImageView.layer.cornerRadius = self.isBeingUsedFor3DTouch ? 14.0f : 0.0f;
-    
-    // Toggle UI controls
-    UITapGestureRecognizer *singleImgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissUI)];
-    singleImgTap.numberOfTapsRequired = 1;
-    [resizableImageView setUserInteractionEnabled:YES];
-//    [resizableImageView addGestureRecognizer:singleImgTap];
 
     // Reset the image on double tap
     UITapGestureRecognizer *doubleImgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(recenterImageOriginOrZoomToPoint:)];
@@ -210,7 +203,13 @@
     // Share options
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showActivitySheet:)];
     [resizableImageView addGestureRecognizer:longPress];
-    
+
+    // Toggle UI controls
+    UITapGestureRecognizer *singleImgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleUI)];
+    singleImgTap.numberOfTapsRequired = 1;
+    [resizableImageView setUserInteractionEnabled:YES];
+    [self.view addGestureRecognizer:singleImgTap];
+
     // Ensure the single tap doesn't fire when a user attempts to double tap
     [singleImgTap requireGestureRecognizerToFail:doubleImgTap];
     [singleImgTap requireGestureRecognizerToFail:longPress];
@@ -469,6 +468,10 @@
 #pragma mark - Misc. Methods
 - (void)dismissUI {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DismissUI" object:nil];
+}
+
+- (void)toggleUI {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ToggleUI" object:nil];
 }
 
 - (void)dimissUIFromDraggingGesture {

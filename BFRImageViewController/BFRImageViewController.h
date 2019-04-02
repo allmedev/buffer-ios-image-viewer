@@ -30,4 +30,7 @@
 /*! Allows you to assign an index which to show first when opening multiple images. */
 @property (nonatomic, assign) NSInteger startingIndex;
 
+/*! Show photo counter */
+@property (nonatomic, assign, getter=isCounterEnabled) BOOL counterEnabled;
+
 @end

@@ -10,7 +10,7 @@
 #import "BFRImageContainerViewController.h"
 #import "BFRImageTransitionAnimator.h"
 
-@interface BFRImageViewController () <UIPageViewControllerDataSource>
+@interface BFRImageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 /*! This view controller just acts as a container to hold a page view controller, which pages between the view controllers that hold an image. */
 @property (strong, nonatomic, nonnull) UIPageViewController *pagerVC;
@@ -33,6 +33,17 @@
 /*! This is used for nothing more than to defer the hiding of the status bar until the view appears to avoid any awkward jumps in the presenting view. */
 @property (nonatomic, getter=shouldHideStatusBar) BOOL hideStatusBar;
 
+/*! Navigation bar background */
+@property (nonatomic, strong, nullable) UIView * topBarBackgroundView;
+/*! Navigation bar */
+@property (nonatomic, strong, nullable) UINavigationBar * topBar;
+
+/*! Counter text field */
+@property (nonatomic, strong, nullable) UILabel * counterLabel;
+
+/*! Chrome visibility */
+@property (nonatomic) BOOL chromeVisible;
+
 @end
 
 @implementation BFRImageViewController
@@ -47,6 +58,7 @@
         self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         self.enableDoneButton = YES;
         self.showDoneButtonOnLeft = YES;
+        self.chromeVisible = YES;
     }
     
     return self;
@@ -70,7 +82,9 @@
 #pragma mark - View Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+
     // View setup
     self.view.backgroundColor = self.isUsingTransparentBackground ? [UIColor clearColor] : [UIColor blackColor];
 
@@ -96,6 +110,7 @@
     if (self.imageViewControllers.count > 1) {
         self.pagerVC.dataSource = self;
     }
+    self.pagerVC.delegate = self;
     [self.pagerVC setViewControllers:@[self.imageViewControllers[self.startingIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Add pager to view hierarchy
@@ -110,31 +125,119 @@
     
     // Register for touch events on the images/scrollviews to hide UI chrome
     [self registerNotifcations];
+
+    // Set up counter
+    if (self.imageViewControllers.count > 1) {
+
+        self.counterLabel = [UILabel new];
+        self.counterLabel.translatesAutoresizingMaskIntoConstraints = false;
+        self.counterLabel.font = [UIFont systemFontOfSize:17.0];
+        self.counterLabel.textColor = [UIColor whiteColor];
+
+        self.navigationItem.titleView = self.counterLabel;
+
+        [self updateCounter];
+    }
+
+    [self setupTopBar];
+
+    // set up tap GR
+//    if (self.imageViewControllers.count > 1) {
+//        UITapGestureRecognizer * gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)];
+//        [self.view addGestureRecognizer:gr];
+//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.hideStatusBar = YES;
-    [UIView animateWithDuration:0.1 animations:^{
-        [self setNeedsStatusBarAppearanceUpdate];
-    }];
-}
-
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    [self updateChromeFrames];
+    [self setNavigationBarVisible:self.chromeVisible];
 }
 
 #pragma mark - Status bar
 - (BOOL)prefersStatusBarHidden{
-    return self.shouldHideStatusBar;
+    return YES;
 }
 
 - (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
-    return UIStatusBarAnimationSlide;
+    return UIStatusBarAnimationNone;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - Properties overrides
+
+- (void)setCounterEnabled:(BOOL)counterEnabled {
+    _counterEnabled = counterEnabled;
+    if (self.isViewLoaded) {
+        self.counterLabel.alpha = counterEnabled && self.chromeVisible ? 1 : 0;
+    }
+}
+
+- (void)setEnableDoneButton:(BOOL)enableDoneButton {
+    _enableDoneButton = enableDoneButton;
+    if (self.isViewLoaded) {
+        self.doneButton.alpha = self.enableDoneButton && self.chromeVisible ? 1 : 0;
+    }
+}
+
+- (void)setShowDoneButtonOnLeft:(BOOL)showDoneButtonOnLeft {
+    _showDoneButtonOnLeft = showDoneButtonOnLeft;
+    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:self.doneButton];
+    if (self.showDoneButtonOnLeft) {
+        self.navigationItem.leftBarButtonItem = item;
+        self.navigationItem.rightBarButtonItem = nil;
+    } else {
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem = item;
+    }
 }
 
 #pragma mark - Chrome
+
+- (void)setupTopBar {
+
+    UIView * bgView = [UIView new];
+    bgView.translatesAutoresizingMaskIntoConstraints = NO;
+    bgView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+
+    [self.view addSubview:bgView];
+
+    self.topBarBackgroundView = bgView;
+
+    UINavigationBar * bar = [[UINavigationBar alloc] init];
+    bar.translatesAutoresizingMaskIntoConstraints = NO;
+
+    bar.barTintColor = [UIColor clearColor];
+    [bar setBackgroundImage:[UIImage new]
+                      forBarMetrics:UIBarMetricsDefault];
+    bar.shadowImage = [UIImage new];
+    bar.translucent = YES;
+
+    bar.barStyle = UIBarStyleBlackOpaque;
+
+    [self.view addSubview:bar];
+
+    [bar pushNavigationItem:self.navigationItem animated:false];
+
+    self.topBar = bar;
+
+    if (@available(iOS 11.0, *)) {
+        [bar.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor].active = YES;
+    } else {
+        [bar.topAnchor constraintEqualToAnchor:self.topLayoutGuide.bottomAnchor].active = YES;
+    }
+    [bar.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor].active = YES;
+    [bar.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor].active = YES;
+    [bar.heightAnchor constraintEqualToConstant:44].active = YES;
+
+    [bgView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
+    [bgView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor].active = YES;
+    [bgView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor].active = YES;
+    [bgView.bottomAnchor constraintEqualToAnchor:bar.bottomAnchor].active = YES;
+}
+
 - (void)addChromeToUI {
     if (self.enableDoneButton) {
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
@@ -145,19 +248,34 @@
         [self.doneButton setAccessibilityLabel:NSLocalizedString(@"Done", @"")];
         [self.doneButton setImage:crossImage forState:UIControlStateNormal];
         [self.doneButton addTarget:self action:@selector(handleDoneAction) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self.view addSubview:self.doneButton];
-        [self.view bringSubviewToFront:self.doneButton];
-        
-        [self updateChromeFrames];
+
+        UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:self.doneButton];
+
+        if (self.showDoneButtonOnLeft) {
+            self.navigationItem.leftBarButtonItem = item;
+        } else {
+            self.navigationItem.rightBarButtonItem = item;
+        }
     }
 }
 
-- (void)updateChromeFrames {
-    if (self.enableDoneButton) {
-        CGFloat buttonX = self.showDoneButtonOnLeft ? 20 : CGRectGetMaxX(self.view.bounds) - 37;
-        self.doneButton.frame = CGRectMake(buttonX, 20, 17, 17);
+- (void)updateCounter {
+    BFRImageContainerViewController* vc = self.pagerVC.viewControllers.firstObject;
+    NSInteger index = [self.imageViewControllers indexOfObject:vc];
+    if (index >= 0 && index < self.imageViewControllers.count) {
+        self.counterLabel.text = [NSString stringWithFormat:@"%ld%@%lu", (long)index + 1, NSLocalizedString(@" from ", nil), (unsigned long)self.imageViewControllers.count];
     }
+}
+
+- (void)setNavigationBarVisible:(BOOL)visible {
+
+    if (self.chromeVisible == visible) { return; }
+
+    self.chromeVisible = visible;
+    self.hideStatusBar = !visible;
+
+    self.topBarBackgroundView.alpha = self.chromeVisible ? 1 : 0;
+    self.topBar.alpha = self.chromeVisible ? 1 : 0;
 }
 
 #pragma mark - Pager Datasource
@@ -191,6 +309,12 @@
     return vc;
 }
 
+#pragma mark - Pager delegate
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
+    [self updateCounter];
+}
+
 #pragma mark - Utility methods
 - (void)dismiss {
     // If we dismiss from a different image than what was animated in - don't do the custom dismiss transition animation
@@ -219,9 +343,14 @@
     [self dismiss];
 }
 
+- (void)handleTap {
+    [self setNavigationBarVisible:!self.chromeVisible];
+}
+
 /*! The images and scrollview are not part of this view controller, so instances of @c BFRimageContainerViewController will post notifications when they are touched for things to happen. */
 - (void)registerNotifcations {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"DismissUI" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTap) name:@"ToggleUI" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"ImageLoadingError" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePop) name:@"ViewControllerPopped" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissWithoutCustomAnimation) name:@"DimissUIFromDraggingGesture" object:nil];
