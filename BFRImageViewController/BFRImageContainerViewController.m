@@ -229,6 +229,7 @@
         self.imgView = [self createImageView];
         [self.scrollView addSubview:self.imgView];
         [self setMaxMinZoomScalesForCurrentBounds];
+        self.scrollViewDismissGR.enabled = NO;
     }
 }
 
@@ -446,8 +447,9 @@
     } completion:^(PINRemoteImageManagerResult * _Nonnull result) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self removeProgressView];
+
             if (!result.image && !result.alternativeRepresentation) {
-                [self removeProgressView];
                 [self showError];
                 return;
             }
@@ -460,7 +462,6 @@
 //            }
 
             [self addImageToScrollView];
-            [self removeProgressView];
         });
     }];
 }
