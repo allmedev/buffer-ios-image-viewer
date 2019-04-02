@@ -155,15 +155,11 @@
 
 #pragma mark - Status bar
 - (BOOL)prefersStatusBarHidden{
-    return YES;
+    return NO;
 }
 
 - (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
     return UIStatusBarAnimationNone;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - Properties overrides
