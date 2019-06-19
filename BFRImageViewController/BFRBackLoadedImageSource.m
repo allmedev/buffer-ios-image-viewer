@@ -19,6 +19,9 @@
 /*! The image that will show initially. */
 @property (strong, nonatomic, readwrite, nonnull) UIImage *image;
 
+/*! Separate property to save high resolution image only. */
+@property (strong, nonatomic, readwrite, nullable) UIImage *highResImage;
+
 @end
 
 @implementation BFRBackLoadedImageSource
@@ -42,6 +45,7 @@
     [[PINRemoteImageManager sharedImageManager] downloadImageWithURL:self.url options:PINRemoteImageManagerDisallowAlternateRepresentations progressDownload:nil completion:^(PINRemoteImageManagerResult * _Nonnull result) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (result.image) {
+                self.highResImage = result.image;
                 if (self.onHighResImageLoaded != nil) {
                     dispatch_async(dispatch_get_main_queue(), ^ {
                         self.onHighResImageLoaded(result.image);

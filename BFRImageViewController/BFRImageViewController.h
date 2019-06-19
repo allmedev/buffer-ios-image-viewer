@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BFRHighResImageChanged.h"
 
 @interface BFRImageViewController : UIViewController
 
@@ -32,5 +33,7 @@
 
 /*! Show photo counter */
 @property (nonatomic, assign, getter=isCounterEnabled) BOOL counterEnabled;
+
+@property (nonatomic, weak, nullable) id<BFRHighResImageChangedDelegate> imageChangedDelegate;
 
 @end

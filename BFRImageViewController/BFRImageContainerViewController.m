@@ -82,9 +82,11 @@
         [self addImageToScrollView];
         
         __weak BFRImageContainerViewController *weakSelf = self;
-        ((BFRBackLoadedImageSource *)self.imgSrc).onHighResImageLoaded = ^ (UIImage *highResImage) {
+        __weak BFRBackLoadedImageSource *source = self.imgSrc;
+        source.onHighResImageLoaded = ^ (UIImage *highResImage) {
             weakSelf.imgLoaded = highResImage;
             weakSelf.imgView.image = weakSelf.imgLoaded;
+            [weakSelf.loadedDelegate highResImageLoaded];
         };
     } else {
         [self showError];

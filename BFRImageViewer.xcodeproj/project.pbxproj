@@ -15,7 +15,6 @@
 		7CC81FAD209F113C000CABBF /* cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC81F9F209F113C000CABBF /* cross@2x.png */; };
 		7CC81FAE209F113C000CABBF /* BFRBackLoadedImageSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC81FA0209F113C000CABBF /* BFRBackLoadedImageSource.m */; };
 		7CC81FAF209F113C000CABBF /* BFRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC81FA1209F113C000CABBF /* BFRImageViewController.m */; };
-		7CC81FB0209F113C000CABBF /* BFRBackLoadedImageSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81FA2209F113C000CABBF /* BFRBackLoadedImageSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CC81FB1209F113C000CABBF /* BFRImageTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC81FA3209F113C000CABBF /* BFRImageTransitionAnimator.m */; };
 		7CC81FB2209F113C000CABBF /* BFRImageContainerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81FA4209F113C000CABBF /* BFRImageContainerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CC81FB3209F113C000CABBF /* BFRImageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81FA5209F113C000CABBF /* BFRImageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,6 +22,8 @@
 		7CC81FBB209F118E000CABBF /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC81FB7209F118E000CABBF /* DACircularProgressView.m */; };
 		7CC81FBC209F118E000CABBF /* DALabeledCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81FB8209F118E000CABBF /* DALabeledCircularProgressView.h */; };
 		7CC81FBD209F118E000CABBF /* DACircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC81FB9209F118E000CABBF /* DACircularProgressView.h */; };
+		90F2E63D22BA4F7C00D0F7EA /* BFRHighResImageChanged.h in Headers */ = {isa = PBXBuildFile; fileRef = 90F2E63C22BA4F7C00D0F7EA /* BFRHighResImageChanged.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90F2E63F22BA506C00D0F7EA /* BFRBackLoadedImageSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 90F2E63E22BA506C00D0F7EA /* BFRBackLoadedImageSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +38,6 @@
 		7CC81F9F209F113C000CABBF /* cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@2x.png"; sourceTree = "<group>"; };
 		7CC81FA0209F113C000CABBF /* BFRBackLoadedImageSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFRBackLoadedImageSource.m; sourceTree = "<group>"; };
 		7CC81FA1209F113C000CABBF /* BFRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFRImageViewController.m; sourceTree = "<group>"; };
-		7CC81FA2209F113C000CABBF /* BFRBackLoadedImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRBackLoadedImageSource.h; sourceTree = "<group>"; };
 		7CC81FA3209F113C000CABBF /* BFRImageTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFRImageTransitionAnimator.m; sourceTree = "<group>"; };
 		7CC81FA4209F113C000CABBF /* BFRImageContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRImageContainerViewController.h; sourceTree = "<group>"; };
 		7CC81FA5209F113C000CABBF /* BFRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRImageViewController.h; sourceTree = "<group>"; };
@@ -46,6 +46,8 @@
 		7CC81FB8209F118E000CABBF /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
 		7CC81FB9209F118E000CABBF /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		7CC81FBF209F11DD000CABBF /* PINRemoteImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PINRemoteImage.framework; path = Carthage/Build/iOS/PINRemoteImage.framework; sourceTree = "<group>"; };
+		90F2E63C22BA4F7C00D0F7EA /* BFRHighResImageChanged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRHighResImageChanged.h; sourceTree = "<group>"; };
+		90F2E63E22BA506C00D0F7EA /* BFRBackLoadedImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRBackLoadedImageSource.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +92,8 @@
 		7CC81F97209F113C000CABBF /* BFRImageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7CC81FA2209F113C000CABBF /* BFRBackLoadedImageSource.h */,
+				90F2E63E22BA506C00D0F7EA /* BFRBackLoadedImageSource.h */,
+				90F2E63C22BA4F7C00D0F7EA /* BFRHighResImageChanged.h */,
 				7CC81FA4209F113C000CABBF /* BFRImageContainerViewController.h */,
 				7CC81F99209F113C000CABBF /* BFRImageTransitionAnimator.h */,
 				7CC81FA5209F113C000CABBF /* BFRImageViewController.h */,
@@ -141,9 +144,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CC81FBD209F118E000CABBF /* DACircularProgressView.h in Headers */,
-				7CC81FB0209F113C000CABBF /* BFRBackLoadedImageSource.h in Headers */,
 				7CC81FB3209F113C000CABBF /* BFRImageViewController.h in Headers */,
 				7CC81FB2209F113C000CABBF /* BFRImageContainerViewController.h in Headers */,
+				90F2E63D22BA4F7C00D0F7EA /* BFRHighResImageChanged.h in Headers */,
+				90F2E63F22BA506C00D0F7EA /* BFRBackLoadedImageSource.h in Headers */,
 				7CC81FA8209F113C000CABBF /* BFRImageTransitionAnimator.h in Headers */,
 				7CC81F91209F1106000CABBF /* BFRImageViewer.h in Headers */,
 				7CC81FBC209F118E000CABBF /* DALabeledCircularProgressView.h in Headers */,

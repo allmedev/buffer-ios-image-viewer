@@ -9,8 +9,9 @@
 #import "BFRImageViewController.h"
 #import "BFRImageContainerViewController.h"
 #import "BFRImageTransitionAnimator.h"
+#import "BFRBackLoadedImageSource.h"
 
-@interface BFRImageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface BFRImageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, BFRHighResImageLoadedDelegate>
 
 /*! This view controller just acts as a container to hold a page view controller, which pages between the view controllers that hold an image. */
 @property (strong, nonatomic, nonnull) UIPageViewController *pagerVC;
@@ -103,6 +104,7 @@
         imgVC.useTransparentBackground = self.isUsingTransparentBackground;
         imgVC.disableHorizontalDrag = (self.images.count > 1);
         [self.imageViewControllers addObject:imgVC];
+        imgVC.loadedDelegate = self;
     }
     
     // Set up pager
@@ -138,6 +140,8 @@
 
         [self updateCounter];
     }
+    
+    [self updateVisibleImageChanged];
 
     [self setupTopBar];
 
@@ -263,6 +267,14 @@
     }
 }
 
+- (void)updateVisibleImageChanged {
+    BFRImageContainerViewController* vc = self.pagerVC.viewControllers.firstObject;
+    if ([vc.imgSrc isKindOfClass:[BFRBackLoadedImageSource class]]) {
+        BFRBackLoadedImageSource* source = vc.imgSrc;
+        [self.imageChangedDelegate highResImageChanged:source.highResImage];
+    }
+}
+
 - (void)setNavigationBarVisible:(BOOL)visible {
 
     if (self.chromeVisible == visible) { return; }
@@ -309,6 +321,7 @@
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
     [self updateCounter];
+    [self updateVisibleImageChanged];
 }
 
 #pragma mark - Utility methods
@@ -350,6 +363,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"ImageLoadingError" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePop) name:@"ViewControllerPopped" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissWithoutCustomAnimation) name:@"DimissUIFromDraggingGesture" object:nil];
+}
+
+#pragma mark - BFRHighResImageLoadedDelegate
+- (void)highResImageLoaded {
+    [self updateVisibleImageChanged];
 }
 
 #pragma mark - Memory Considerations

@@ -18,6 +18,9 @@
 /*! This is called on the main thread when the higher resolution image is finished loading. */
 @property (copy) void (^ _Nonnull onHighResImageLoaded)(UIImage * _Nullable highResImage);
 
+/*! Separate property to save high resolution image only. */
+@property (strong, nonatomic, readonly, nullable) UIImage *highResImage;
+
 /*! Use initWithInitialImage:hiResURL instead. */
 - (instancetype _Nullable)init NS_UNAVAILABLE;
 

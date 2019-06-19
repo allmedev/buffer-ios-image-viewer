@@ -13,6 +13,7 @@
 #import <BFRImageViewer/BFRImageTransitionAnimator.h>
 #import <BFRImageViewer/BFRImageViewController.h>
 #import <BFRImageViewer/BFRBackLoadedImageSource.h>
+#import <BFRImageViewer/BFRHighResImageChanged.h>
 
 //! Project version number for BFRImageViewer.
 FOUNDATION_EXPORT double BFRImageViewerVersionNumber;
