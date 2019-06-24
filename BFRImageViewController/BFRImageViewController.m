@@ -26,7 +26,7 @@
 @property (strong, nonatomic, nullable) NSTimer *timerHideUI;
 
 /*! The button that sticks to the top left of the view that is responsible for dismissing this view controller. */
-@property (strong, nonatomic, nullable) UIButton *doneButton;
+@property (strong, nonatomic, nullable) UIBarButtonItem *doneButtonItem;
 
 /*! This will determine whether to change certain behaviors for 3D touch considerations based on its value. */
 @property (nonatomic, getter=isBeingUsedFor3DTouch) BOOL usedFor3DTouch;
@@ -177,20 +177,24 @@
 
 - (void)setEnableDoneButton:(BOOL)enableDoneButton {
     _enableDoneButton = enableDoneButton;
+    UIBarButtonItem *item = enableDoneButton ? self.doneButtonItem : nil;
     if (self.isViewLoaded) {
-        self.doneButton.alpha = self.enableDoneButton && self.chromeVisible ? 1 : 0;
+        if (self.showDoneButtonOnLeft) {
+            self.navigationItem.leftBarButtonItem = item;
+        } else {
+            self.navigationItem.rightBarButtonItem = item;
+        }
     }
 }
 
 - (void)setShowDoneButtonOnLeft:(BOOL)showDoneButtonOnLeft {
     _showDoneButtonOnLeft = showDoneButtonOnLeft;
-    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:self.doneButton];
     if (self.showDoneButtonOnLeft) {
-        self.navigationItem.leftBarButtonItem = item;
+        self.navigationItem.leftBarButtonItem = self.doneButtonItem;
         self.navigationItem.rightBarButtonItem = nil;
     } else {
         self.navigationItem.leftBarButtonItem = nil;
-        self.navigationItem.rightBarButtonItem = item;
+        self.navigationItem.rightBarButtonItem = self.doneButtonItem;
     }
 }
 
@@ -240,21 +244,16 @@
 
 - (void)addChromeToUI {
     if (self.enableDoneButton) {
-        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-        NSString *imagePath = [bundle pathForResource:@"cross" ofType:@"png"];
-        UIImage *crossImage = [[UIImage alloc] initWithContentsOfFile:imagePath];
-
-        self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.doneButton setAccessibilityLabel:NSLocalizedString(@"Done", @"")];
-        [self.doneButton setImage:crossImage forState:UIControlStateNormal];
-        [self.doneButton addTarget:self action:@selector(handleDoneAction) forControlEvents:UIControlEventTouchUpInside];
-
-        UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:self.doneButton];
+        UIImage *icon = [[UIImage imageNamed:@"cross.png"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+        self.doneButtonItem = [[UIBarButtonItem alloc] initWithImage:icon
+                                                           style:UIBarButtonItemStylePlain
+                                                          target:self
+                                                          action:@selector(handleDoneAction)];
 
         if (self.showDoneButtonOnLeft) {
-            self.navigationItem.leftBarButtonItem = item;
+            self.navigationItem.leftBarButtonItem = self.doneButtonItem;
         } else {
-            self.navigationItem.rightBarButtonItem = item;
+            self.navigationItem.rightBarButtonItem = self.doneButtonItem;
         }
     }
 }
