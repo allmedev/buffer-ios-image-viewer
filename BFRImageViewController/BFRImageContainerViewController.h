@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BFRHighResImageChanged.h"
 
 /*! This class holds an image to view, if you need an image viewer alloc @C BFRImageViewController instead. This class isn't meant to instanitated outside of it. */
 @interface BFRImageContainerViewController : UIViewController
@@ -25,5 +26,8 @@
 
 /*! If there is more than one image in the containing @c BFRImageViewController - this property is set to YES to make swiping from image to image easier. */
 @property (nonatomic, getter=shouldDisableHorizontalDrag) BOOL disableHorizontalDrag;
+
+/*! Use this delegate to monitor high res image on active page */
+@property (nonatomic, weak, nullable) id<BFRHighResImageLoadedDelegate> loadedDelegate;
 
 @end
