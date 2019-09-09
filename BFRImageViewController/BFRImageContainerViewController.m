@@ -87,6 +87,9 @@
             NSLog(@"onHighResImageLoaded %@", highResImage);
             weakSelf.imgLoaded = highResImage;
             weakSelf.imgView.image = weakSelf.imgLoaded;
+            [weakSelf.view setNeedsLayout];
+            [weakSelf.view layoutIfNeeded];
+            [self setMaxMinZoomScalesForCurrentBounds];
             [weakSelf.loadedDelegate highResImageLoaded];
         };
     } else {
