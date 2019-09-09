@@ -84,8 +84,14 @@
         __weak BFRImageContainerViewController *weakSelf = self;
         __weak BFRBackLoadedImageSource *source = self.imgSrc;
         source.onHighResImageLoaded = ^ (UIImage *highResImage) {
+            BOOL needsLayout = weakSelf.imgLoaded == nil;
             weakSelf.imgLoaded = highResImage;
             weakSelf.imgView.image = weakSelf.imgLoaded;
+            if (needsLayout) {
+                [weakSelf.view setNeedsLayout];
+                [weakSelf.view layoutIfNeeded];
+                [self setMaxMinZoomScalesForCurrentBounds];
+            }
             [weakSelf.loadedDelegate highResImageLoaded];
         };
     } else {
