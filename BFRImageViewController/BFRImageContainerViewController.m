@@ -84,6 +84,7 @@
         __weak BFRImageContainerViewController *weakSelf = self;
         __weak BFRBackLoadedImageSource *source = self.imgSrc;
         source.onHighResImageLoaded = ^ (UIImage *highResImage) {
+            NSLog(@"onHighResImageLoaded %@", highResImage);
             weakSelf.imgLoaded = highResImage;
             weakSelf.imgView.image = weakSelf.imgLoaded;
             [weakSelf.loadedDelegate highResImageLoaded];
@@ -99,6 +100,7 @@
 
 - (void)viewWillLayoutSubviews {
     // Scrollview
+    NSLog(@"viewWillLayoutSubviews");
     [self.scrollView setFrame:self.view.bounds];
 
     // Set the aspect ratio of the image
@@ -119,6 +121,9 @@
 
     // Check for any NaNs, which should get corrected in the next drawing cycle
     BOOL isInvalidRect = (isnan(leftOffset) || isnan(topOffset) || isnan(newWidth) || isnan(newHeight));
+    if (isInvalidRect) {
+        NSLog(@"viewWillLayoutSubviews: isInvalidRect");
+    }
     self.imgView.frame = isInvalidRect ? CGRectZero : newRect;
 }
 
