@@ -144,6 +144,13 @@
     [self updateVisibleImageChanged];
 
     [self setupTopBar];
+    
+    UIImage *icon = [[UIImage imageNamed:@"cross.png"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+    self.doneButtonItem = [[UIBarButtonItem alloc] initWithImage:icon
+                                                           style:UIBarButtonItemStylePlain
+                                                          target:self
+                                                          action:@selector(handleDoneAction)];
+    self.navigationItem.leftBarButtonItem = self.doneButtonItem;
 
     // set up tap GR
 //    if (self.imageViewControllers.count > 1) {
