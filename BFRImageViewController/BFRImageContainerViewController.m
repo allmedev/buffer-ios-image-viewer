@@ -45,6 +45,8 @@
 /*! Animated view pan GR to have an ability to dismiss */
 @property (strong, nonatomic, nullable) UIPanGestureRecognizer * scrollViewDismissGR;
 
+@property (strong, nonatomic, nullable) UIPanGestureRecognizer *panImg;
+
 @end
 
 @implementation BFRImageContainerViewController
@@ -166,11 +168,11 @@
     progressView.trackTintColor = [UIColor colorWithWhite:0.2 alpha:1];
     progressView.progressTintColor = [UIColor colorWithWhite:1.0 alpha:1];
 
-    UIPanGestureRecognizer *panImg = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleNoImageDrag:)];
+    UIPanGestureRecognizer *panNoImg = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleNoImageDrag:)];
     if (self.shouldDisableHorizontalDrag) {
-        panImg.delegate = self;
+        panNoImg.delegate = self;
     }
-    [progressView addGestureRecognizer:panImg];
+    [progressView addGestureRecognizer:panNoImg];
     
     return progressView;
 }
@@ -223,11 +225,11 @@
     [singleImgTap requireGestureRecognizerToFail:longPress];
     
     // Dragging to dismiss
-    UIPanGestureRecognizer *panImg = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageDrag:)];
+    self.panImg = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageDrag:)];
     if (self.shouldDisableHorizontalDrag) {
-        panImg.delegate = self;
+        self.panImg.delegate = self;
     }
-    [resizableImageView addGestureRecognizer:panImg];
+    [resizableImageView addGestureRecognizer:self.panImg];
     
     return resizableImageView;
 }
@@ -275,8 +277,8 @@
     if ([UIScreen instancesRespondToSelector:@selector(scale)]) {
         maxScale = maxScale / [[UIScreen mainScreen] scale];
         
-        if (maxScale < minScale) {
-            maxScale = minScale * 2;
+        if (maxScale / 2 <= minScale) {
+            maxScale = minScale * 8;
         }
     }
     
@@ -304,6 +306,11 @@
     }
     
     self.imgView.frame = contentsFrame;
+    if ((contentsFrame.size.width > boundsSize.width * 1.4) || (contentsFrame.size.height > boundsSize.height * 1.4)) {
+        self.panImg.enabled = NO;
+    } else {
+        self.panImg.enabled = YES;
+    }
 }
 
 /*! Called when an image is double tapped. Either zooms out or to specific point */
